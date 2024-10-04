@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form & Table</title>
+        <meta name = "viewport" content="width=device-width, initial-scale = 1.0">
+        <meta name = "keywords" content="form & table">
+        <meta name = "description" content="This is form & table created by Anandh">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body class="bg-light">
+        <div class="container">
+            <div class="mt-5 border shadow-lg">
+                <h1 class="text-center py-3">Briyani Hotel</h1>
+                <div class="row py-2 px-5">
+                    <div class="col-sm-6">
+                        <div class="form-group mt-2">
+                            <label for="firstName">First name</label>
+                            <input type="text" class="form-control" id="firstName">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group mt-2">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2 px-5">
+                    <div class="col-sm-6">
+                        <div class="form-group mt-2">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group mt-2">
+                            <label for="address">Address</label>
+                            <input type="address" class="form-control" id="address">
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2 px-5">
+                    <div class="col-sm-6">
+                        <div class="form-group mt-2">
+                            <label for="pinCode">PinCode</label>
+                            <input type="text" class="form-control" id="pinCode" aria-describedby="emailHelp">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="gender">Gender</label>
+                        <div class="form-group mt-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input gender" type="radio" name="gender" id="gender1" value="male">
+                                <label class="form-check-label" for="gender1">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input gender" type="radio" name="gender" id="gender2" value="female">
+                                <label class="form-check-label" for="gender2">
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2 px-5">
+                    <label for="choiceOfFood">Choice of Food</label>
+                    <div class="col-sm-12">
+                        <div class="form-group mt-3 mb-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input choiceOfFood" type="checkbox" value="Chicken Briyani" id="choice1" name="choice">
+                                <label class="form-check-label" for="choice1">
+                                    Chicken Briyani
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input choiceOfFood" type="checkbox" value="Mutton Briyani" id="choice2" name="choice">
+                                <label class="form-check-label" for="choice2">
+                                    Mutton Briyani
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input choiceOfFood" type="checkbox" value="Fish Briyani" id="choice3" name="choice">
+                                <label class="form-check-label" for="choice3">
+                                    Fish Briyani
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input choiceOfFood" type="checkbox" value="Prawn Briyani" id="choice4" name="choice">
+                                <label class="form-check-label" for="choice4">
+                                    Prawn Briyani
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input choiceOfFood" type="checkbox" value="Nalli Briyani" id="choice5" name="choice">
+                                <label class="form-check-label" for="choice5">
+                                    Nalli Briyani
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted">Must choose at least 2 out of 5 options.</small>
+                </div>
+                
+                <div class="row py-2 px-5">
+                    <div class="col-sm-6">
+                        <div class="form-group mt-2">
+                            <label for="state">State</label>
+                            <input type="text" class="form-control" id="state">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group mt-2">
+                            <label for="country">Country</label>
+                            <input type="text" class="form-control" id="country">
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2 px-5">
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary col-sm-1 float-end mx-2 rounded" onClick="addContact()">Add</button>
+                        <button class="btn btn-danger col-sm-1 float-end rounded" onClick="clearForm()">Clear</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row bg-white my-3">
+                <table id="contactTable" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Pincode</th>
+                            <th>Gender</th>
+                            <th>Food</th>
+                            <th>State</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
