@@ -1,0 +1,43 @@
+.App {
+  text-align: center;
+  font-family: 'Courier New, Courier, monospace';
+  margin: 20px;
+}
+
+.reset-button{
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.tile-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-gap: 10px;
+  justify-content: center;
+}
+
+.tile {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background-color: salmon;
+  color: black;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tile.flipped {
+  background-color: cadetblue;
+}
+
+.tile.matched{
+  color: green;
+  cursor: default;
+}
