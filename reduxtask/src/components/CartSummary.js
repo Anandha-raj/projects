@@ -10,7 +10,7 @@ const CartSummary = ({totalItems, totalAmount}) => {
             dispatch({type: 'REMOVEALL'});
         }, 6000);
     }
-    const amt = (totalAmount - 3) - ((totalAmount*18)/100);
+    const amt = (totalAmount - 3) + ((totalAmount*18)/100);
     return(
         <>
             <ToastContainer />
@@ -28,7 +28,7 @@ const CartSummary = ({totalItems, totalAmount}) => {
                     </div>
                     <div className="d-flex justify-content-between align-items-center small fw-bold">
                         <p>Tax (GST 18%)</p>
-                        <p className="fs-6">-${totalAmount?(totalAmount*18)/100:0}</p>
+                        <p className="fs-6">${totalAmount?(totalAmount*18)/100:0}</p>
                     </div>
                     <hr/>
                     <div className="d-flex justify-content-between align-items-center fs-4 fw-bold">
