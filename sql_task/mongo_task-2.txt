@@ -1,0 +1,83 @@
+use guvi_zenclass
+
+db.createCollection("users")
+db.users.insertMany([
+   { name: "Alice", email: "alice@example.com", role: "student" },
+   { name: "Bob", email: "bob@example.com", role: "student" },
+   { name: "Charlie", email: "charlie@example.com", role: "mentor", mentees: [] },
+   { name: "David", email: "david@example.com", role: "mentor", mentees: [] }
+]);
+
+db.createCollection("codekata")
+db.codekata.insertMany([
+    { userId: ObjectId("64d38edcdbe50c7aa43f0f1b"), problemsSolved: 20 },
+    { userId: ObjectId("64d38edcdbe50c7aa43f0f5f"), problemSolved: 30 }
+])
+ 
+
+db.createCollection("attendance")
+db.users.insertMany([
+    { _id: ObjectId("64d38edcdbe50c7aa43f0f1b"), name: "Alice", email: "alice@example.com", role: "student" },
+    { _id: ObjectId("64d38edcdbe50c7aa43f0f1c"), name: "Bob", email: "bob@example.com", role: "student" },
+    { _id: ObjectId("64d38edcdbe50c7aa43f0f1d"), name: "Charlie", email: "charlie@example.com", role: "mentor", mentees: [ObjectId("64d38edcdbe50c7aa43f0f1b")] },
+    { _id: ObjectId("64d38edcdbe50c7aa43f0f1e"), name: "David", email: "david@example.com", role: "mentor", mentees: [ObjectId("64d38edcdbe50c7aa43f0f1c")] }
+ ]);
+
+ 
+db.createCollection("topics")
+db.topics.insertMany([
+    { topic: "MongoDB Basics", date: "2020-10-01" },
+    { topic: "Advanced MongoDB", date: "2020-10-15" },
+    { topic: "Indexing in MongoDB", date: "2020-10-20" }
+ ]);
+
+ 
+db.createCollection("tasks")
+db.tasks.insertMany([
+    { userId: ObjectId("64d38edcdbe50c7aa43f0f1b"), task: "Build a MongoDB schema", submitted: true, submitted_date: "2020-10-14" },
+    { userId: ObjectId("64d38edcdbe50c7aa43f0f1c"), task: "Optimize queries", submitted: false, submitted_date: "2020-10-18" },
+    { userId: ObjectId("64d38edcdbe50c7aa43f0f1e"), task: "Create indexes", submitted: true, submitted_date: "2020-10-15" }
+ ]);
+
+db.createCollection("company_drives")
+db.company_drives.insertMany([
+    { companyName: "Google", date: "2020-10-16", students: [ObjectId("64d38edcdbe50c7aa43f0f1b"), ObjectId("64d38edcdbe50c7aa43f0f1c")] },
+    { companyName: "Microsoft", date: "2020-10-20", students: [ObjectId("64d38edcdbe50c7aa43f0f1e")] }
+ ]);
+ 
+db.createCollection("mentors")
+db.mentors.insertMany([
+    { name: "Charlie", mentees: 20 },
+    { name: "David", mentees: 25 }
+ ]);
+
+
+Solutions:
+========== 
+
+1.Find all the topics and tasks taught in October.
+db.topics.find({ date: { $gte: "2020-10-01", $lte: "2020-10-31" } });
+db.tasks.find({ date: { $gte: "2020-10-01", $lte: "2020-10-31" } });
+
+2. Find all the company drives between 15-Oct-2020 and 31-Oct-2020.
+db.company_drives.find({ date: { $gte: "2020-10-15", $lte: "2020-10-31" } });
+
+3. Find all the company drives and students who appeared for placements.
+db.company_drives.aggregate([
+    { $project: { companyName: 1, date: 1, students: 1 } }
+ ]);
+ 
+4. Find the number of problems solved by each user in Codekata.
+db.codekata.aggregate([
+    { $group: { _id: "$userId", totalProblemsSolved: { $sum: "$problemsSolved" } } }
+ ]);
+
+5. Find all the mentors with mentees count more than 15.
+db.mentors.find({ mentees: { $gt: 15 } });
+
+6. Find the number of users who were absent and didn't submit tasks between 15-Oct-2020 and 31-Oct-2020.
+db.tasks.find({ 
+    submitted_date: { $gte: "2020-10-15", $lte: "2020-10-31" },
+    submitted: false
+ });
+ 
